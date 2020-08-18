@@ -1,0 +1,523 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>Stock</title><link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px !important; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    padding-bottom: .3em;
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+   padding-bottom: .3em;
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+
+</style>
+</head>
+<body class='typora-export os-windows' >
+<div  id='write'  class = 'is-node'><h1><a name="stock" class="md-header-anchor"></a><span>Stock</span></h1><p><strong><span>Contents:</span></strong></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#stock">Stock</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n4"><a class="md-toc-inner" href="#introduction">Introduction</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n23"><a class="md-toc-inner" href="#access-matrix">Access Matrix</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n35"><a class="md-toc-inner" href="#reports">Reports</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n36"><a class="md-toc-inner" href="#stock-summary">Stock Summary</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n69"><a class="md-toc-inner" href="#cost-summary">Cost Summary</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n91"><a class="md-toc-inner" href="#low-stock-check">Low Stock Check</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n114"><a class="md-toc-inner" href="#custom-report">Custom Report</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n116"><a class="md-toc-inner" href="#van-stock-report">Van Stock Report</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n144"><a class="md-toc-inner" href="#orders--third-party-orders">Orders &amp; Third Party Orders</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n145"><a class="md-toc-inner" href="#orders">Orders</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n147"><a class="md-toc-inner" href="#third-party-orders">Third Party Orders</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n188"><a class="md-toc-inner" href="#bybox-process">ByBox Process</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n192"><a class="md-toc-inner" href="#creating-third-party-orders">Creating Third Party Orders</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n310"><a class="md-toc-inner" href="#actions---inspecting-editing-and-cancelling-third-party-orders">Actions - Inspecting, Editing and Cancelling Third Party Orders</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n214"><a class="md-toc-inner" href="#inspecting">Inspecting</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n314"><a class="md-toc-inner" href="#editing">Editing</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n316"><a class="md-toc-inner" href="#cancelling">Cancelling</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n210"><a class="md-toc-inner" href="#triaging-errors">Triaging Errors</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n198"><a class="md-toc-inner" href="#items--meter-details">Items &amp; Meter Details</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n359"><a class="md-toc-inner" href="#items">Items</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n452"><a class="md-toc-inner" href="#item-creation">Item Creation</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n448"><a class="md-toc-inner" href="#item-costs">Item Costs</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n455"><a class="md-toc-inner" href="#actions---inspecting-editing-costs-and-deletion">Actions - Inspecting, Editing, Costs and Deletion</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n447"><a class="md-toc-inner" href="#meter-details">Meter Details</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n199"><a class="md-toc-inner" href="#stock-n199">Stock</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n200"><a class="md-toc-inner" href="#engineer-stock-checks">Engineer Stock Checks</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n201"><a class="md-toc-inner" href="#van-stock-transfer">Van Stock Transfer</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n202"><a class="md-toc-inner" href="#regions-warehouses--locations">Regions, Warehouses &amp; Locations</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n203"><a class="md-toc-inner" href="#containers">Containers</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n204"><a class="md-toc-inner" href="#audits">Audits</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n205"><a class="md-toc-inner" href="#users">Users</a></span></p></div><h2><a name="introduction" class="md-header-anchor"></a><span>Introduction</span></h2><p><span>Stock is another of Reach&#39;s modules.</span></p><p><span>It allows office staff to:</span></p><ul><li><span>View stock reports and cost summaries</span></li><li><span>Manage engineer and third party orders</span></li><li><span>Add stock items and details for industry flows</span></li><li><span>Add/remove assets from stock</span></li><li><span>Transfer stock between engineers</span></li><li><span>View audit trails for orders and transfers</span></li><li><span>Manage Stock users</span></li></ul><p><img src="C:\Users\lwood\Desktop\Typora Training Documents\_photos\STOCK.PNG" style="zoom: 80%;" /></p><h3><a name="access-matrix" class="md-header-anchor"></a><span>Access Matrix</span></h3><p><span>User access can be edited by admin users in Hub.</span></p><figure><table><thead><tr><th><span>Access Level</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><span>Admin</span></td><td><span>For office staff/managers only. Allows users to create, edit and view stock items and orders. (all Stock functions).</span></td></tr><tr><td><span>Engineer</span></td><td><span>For engineers only. Allows them to make and accept orders, needed for commissioning and van stock.</span></td></tr></tbody></table></figure><h2><a name="reports" class="md-header-anchor"></a><span>Reports</span></h2><h3><a name="stock-summary" class="md-header-anchor"></a><span>Stock Summary</span></h3><p><span>Stock Summary shows a breakdown of items by count and location.</span></p><p><span>The report has the following fields:</span></p><figure><table><thead><tr><th><span>Field</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><span>ID</span></td><td><span>ID of the item in STOCK</span></td></tr><tr><td><span>Name</span></td><td><span>Name assigned to the item in STOCK</span></td></tr><tr><td><span>Description</span></td><td><span>Description assigned to the item in STOCK</span></td></tr><tr><td><span>ByBox Count</span></td><td><span>(not currently implemented)</span></td></tr><tr><td><span>Total Warehouse Count</span></td><td><span>Count of assets for this item held in ByBox&#39;s warehouse on our behalf</span></td></tr><tr><td><span>Van Count</span></td><td><span>Count of assets for this item dispatched to engineer vans but not installed</span></td></tr><tr><td><span>Total Count</span></td><td><span>Sum of Van Count, Total Warehouse Count and ByBox Count</span></td></tr><tr><td><span>Total Cost</span></td><td><span>Total Count * cost assigned to the item in STOCK</span></td></tr></tbody></table></figure><blockquote><p><span>This report can be downloaded from STOCK by clicking the </span><code>Download CSV</code><span> button.</span></p></blockquote><h3><a name="cost-summary" class="md-header-anchor"></a><span>Cost Summary</span></h3><p><span>Cost Summary shows a breakdown of items used between dates.</span></p><p><span>The report has the following fields:</span></p><figure><table><thead><tr><th><span>Field</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><span>Name</span></td><td><span>Name assigned to the item in STOCK</span></td></tr><tr><td><span>Description</span></td><td><span>Description assigned to the item in STOCK</span></td></tr><tr><td><span>Qty</span></td><td><span>Count of assets for this item installed between the specified dates</span></td></tr><tr><td><span>Total Price</span></td><td><span>Qty * cost assigned to the item in STOCK</span></td></tr></tbody></table></figure><blockquote><p><span>This report can be downloaded from STOCK by clicking the </span><code>Download CSV</code><span> button.</span></p></blockquote><p><span>You can also specify your search by Warehouse or Contract to get more specific reports.</span></p><h3><a name="low-stock-check" class="md-header-anchor"></a><span>Low Stock Check</span></h3><p><span>Low Stock Check shows a breakdown of items in STOCK that have stock levels lower then the item&#39;s assigned Minimum Unit Threshold.</span></p><p><span>The report has the following fields:</span></p><figure><table><thead><tr><th><span>Field</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><span>ID</span></td><td><span>ID of the item in STOCK</span></td></tr><tr><td><span>Name</span></td><td><span>Name assigned to the item in STOCK</span></td></tr><tr><td><span>Warehouse</span></td><td><span>Warehouse assigned to the item in STOCK</span></td></tr><tr><td><span>Warehouse Count</span></td><td><span>Count of assets for this item held in ByBox&#39;s warehouse on our behalf</span></td></tr><tr><td><span>Minimum Stock</span></td><td><span>The Minimum Unit Threshold assigned to the item in STOCK</span></td></tr></tbody></table></figure><p><span>You can also specify your search by Contract.</span></p><h3><a name="custom-report" class="md-header-anchor"></a><span>Custom Report</span></h3><p><span>Not currently in use.</span></p><h3><a name="van-stock-report" class="md-header-anchor"></a><span>Van Stock Report</span></h3><p><span>Van Stock Report shows a breakdown of the count of each item assigned to every engineer, allowing a detailed insight into what each engineer has on their van.</span></p><p><span>The report has the following fields:</span></p><figure><table><thead><tr><th><span>Field</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><span>Name</span></td><td><span>Name of engineer</span></td></tr><tr><td><span>Contract</span></td><td><span>Contract assigned to the item in STOCK, NOT the contract(s) assigned to the engineer</span></td></tr><tr><td><span>SKU</span></td><td><span>SKU assigned to the item in STOCK</span></td></tr><tr><td><span>Item</span></td><td><span>Description assigned to the item in STOCK</span></td></tr><tr><td><span>Region</span></td><td><span>Region assigned to the engineer, NOT the item.</span></td></tr><tr><td><span>Qty</span></td><td><span>Count of assets of this type on the engineer&#39;s van</span></td></tr></tbody></table></figure><blockquote><p><span>This report can be downloaded from STOCK by clicking the </span><code>Download CSV</code><span> button.</span></p></blockquote><p><span>You can specify the search by User (engineer), Item, Contract, Region and Item Type (serialised or non-serialised).</span></p><h2><a name="orders--third-party-orders" class="md-header-anchor"></a><span>Orders &amp; Third Party Orders</span></h2><h3><a name="orders" class="md-header-anchor"></a><span>Orders</span></h3><p><span>Not currently in use.</span></p><h3><a name="third-party-orders" class="md-header-anchor"></a><span>Third Party Orders</span></h3><p><span>Any order that an engineer makes from TASK will appear in this section. Each order is given an ID in STOCK and a unique reference number (8-digit) which is also given to the engineer at the time of order.</span></p><p><span>The table has the following fields:</span></p><figure><table><thead><tr><th><span>Field</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><span>#</span></td><td><span>Unique ID assigned to the third part order; used in Audit section of STOCK</span></td></tr><tr><td><span>Reference</span></td><td><span>Unique reference given to the order for use by ByBox</span></td></tr><tr><td><span>Status</span></td><td><span>Order Status, either </span><em><span>Created, Picking or Picked</span></em></td></tr><tr><td><span>Location</span></td><td><span>Will always be &#39;</span><em><span>picking lane</span></em><span>&#39;</span></td></tr><tr><td><span>Third Party</span></td><td><span>Not in use</span></td></tr><tr><td><span>Warehouse</span></td><td><span>Will always be &#39;</span><em><span>ByBox</span></em><span>&#39;</span></td></tr><tr><td><span>User</span></td><td><span>Engineer who created the order</span></td></tr><tr><td><span>Order Date Placed</span></td><td><span>Timestamp of order creation in STOCK</span></td></tr><tr><td><span>Collection Date</span></td><td><span>Only for </span><em><span>Archived</span></em><span> orders, the timestamp of order collection from an engineer&#39;s ByBox</span></td></tr><tr><td><span>Modified</span></td><td><span>Timestamp of last modification to order, more detail can be seen in the Audit section of STOCK</span></td></tr></tbody></table></figure><blockquote><p><span>This report can be downloaded from STOCK by clicking the </span><code>Download CSV</code><span> button.</span></p></blockquote><p><span>You can specify your search by </span><em><span>Undispatched</span></em><span> or </span><em><span>Archived</span></em><span> orders; 8-digit reference, Status, User, Warehouse.</span></p><p><span>Clicking the </span><code>All &gt;</code><span> Button allows use of Order Date Placed From, date ranges for Order Date Placed and Collection Date and Region filters.</span></p><h4><a name="bybox-process" class="md-header-anchor"></a><span>ByBox Process</span></h4><p><span>The &#39;Third-Party&#39; is ByBox, a remote company which manages the processing of incoming deliveries and dispatches orders. Each engineer has a ByBox collection point from where they can collect their orders from. At the point of collection, engineers will be prompted in TASK to accept the delivery, at which point they should check the order contains the correct serials &amp; items before proceed</span></p><p><span>When an order is created by an engineer in TASK, it is sent </span><em><span>via</span></em><span> an API link to ByBox. ByBox will process the order, pick the items for the delivery (using FIFO principal) and send return payload to STOCK&#39;s server, which STOCK then processes to create the Third Party Order.</span></p><p><span>If there is an error with the creation of the order, for instance if a SKU is missing or a serial is missing from a SKU, we will be notified by server@byboc.adaptor.stock.reachwm.io of the error.</span></p><h4><a name="creating-third-party-orders" class="md-header-anchor"></a><span>Creating Third Party Orders</span></h4><p><span>Third Party Orders can be created to simulate the order process. </span></p><p><span>Click the </span><code>+ New</code><span> button at the top-right of the Third Party Orders page.</span></p><p><img src="C:\Users\lwood\Desktop\Typora Training Documents\_photos\TPOs_new.PNG" style="zoom: 50%;" /></p><blockquote><p><span>Third Party Orders can be done in a bulk upload using </span><a href='https://docs.google.com/spreadsheets/d/1tLuUCZYEv3LJZqXPdoOVkR-1qZEgG9sWQIDhqrZDrOQ/edit?usp=sharing'><span>this</span></a><span> template (alternatively you can click </span><code>+ Line Items Bulk Upload Demo</code><span> to download the template).</span></p></blockquote><p><span>The template has 3 fields:</span></p><figure><table><thead><tr><th><span>Field</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><span>Contract</span></td><td><span>Contract assigned to the item in STOCK (currently either </span><em><span>Octopus Energy Services</span></em><span> or </span><em><span>Calvin</span></em><span>)</span></td></tr><tr><td><span>Item_id</span></td><td><span>Unique ID assigned to the item in STOCK</span></td></tr><tr><td><span>Quantity_Serial</span></td><td><span>If the item is </span><em><span>serialised</span></em><span> then provide the item serial, otherwise if the item is </span><em><span>unserialised</span></em><span> in STOCK, put the quantity</span></td></tr></tbody></table></figure><p><span>It is recommended to use the bulk template for large amounts of serials, but for 1 or 2 items it is unnecessary, instead you can click the </span><code>+ Add Line Item</code><span> button to simulate rows in the template.</span></p><p><span>The other options that are needed for the order to process are:</span></p><figure><table><thead><tr><th><span>Field</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><span>User</span></td><td><span>Engineer the order should be assigned to</span></td></tr><tr><td><span>Reference</span></td><td><span>Arbitrary reference for the order, can be viewed in the Audit section of STOCK</span></td></tr><tr><td><span>Order Placed Date</span></td><td><span>Date the order was &#39;created&#39;</span></td></tr><tr><td><span>Collection Date</span></td><td><span>Date the order was &#39;collected&#39;, usually these two dates will be the same</span></td></tr></tbody></table></figure><p><span>Once all fields are set, click </span><code>Submit</code><span> to create the order. The order will now appear on the main page of the Third Party Orders section as </span><em><span>undispatched</span></em><span>.</span></p><p><span>If an engineer&#39;s order had an error and has been manually created this way, if the resync TASK it should now prompt them for collection. Otherwise, another way to complete the order is to dispatch it manually (see below).</span></p><h4><a name="actions---inspecting-editing-and-cancelling-third-party-orders" class="md-header-anchor"></a><span>Actions - Inspecting, Editing and Cancelling Third Party Orders</span></h4><p><span>At the far-right of each order are 3 buttons, Inspect, Edit and Cancel, respectively.</span></p><p><img src="C:\Users\lwood\Desktop\Typora Training Documents\_photos\TPO_action.PNG" style="zoom: 67%;" /></p><h5><a name="inspecting" class="md-header-anchor"></a><span>Inspecting</span></h5><p><span>Inspecting lets you see additional details about the order, namely the Region, Container, and a breakdown of items in the order and the quantity ordered.</span></p><p><span>There are 2 actions that can be taken, </span><code>Print</code><span> and </span><code>Dispatch</code><span>. Print allows you to save a printable .pdf of the order showing the order details, while Dispatch allows you to manually dispatch the order to the engineer. This simulates an engineer collecting their order and will transition the status of all assets in the container from </span><em><span>in picking lane</span></em><span> to </span><em><span>dispatched</span></em><span> and </span><em><span>in installer van</span></em><span>. At this point these assets can then be installed.</span></p><p><span>Clicking on the container ID takes you to a more detailed breakdown of its stock, where each record is an individual asset.</span></p><h5><a name="editing" class="md-header-anchor"></a><span>Editing</span></h5><p><span>All aspects of a Third Party Order can be edited, even after it has been </span><em><span>archived</span></em><span>. </span></p><p><span>Uses for editing before the order is dispatched include:</span></p><ul><li><span>Changing the engineer (User) the order will be dispatched to</span></li><li><span>Changing the reference number</span></li><li><span>Adding line items to manually add stock the the order (in case there was an issue in processing)</span></li></ul><p><span>It is not recommended/needed to edit an order after it has been </span><em><span>archived</span></em><span>.</span></p><h5><a name="cancelling" class="md-header-anchor"></a><span>Cancelling</span></h5><p><span>In the rare case an order needs to be deleted, cancelling the order will stop all processing and remove the order from the Third Party Orders section.</span></p><p><mark><span>Any assets contained in the order will not have their status changed!</span></mark></p><h4><a name="triaging-errors" class="md-header-anchor"></a><span>Triaging Errors</span></h4><p><span>[NEED TO DO BEFORE 1ST SEP, look at past possible scenarios]</span></p><h2><a name="items--meter-details" class="md-header-anchor"></a><span>Items &amp; Meter Details</span></h2><p><span>These two sections define the types of assets we can hold in stock and the details assigned to those assets for MTDs.</span></p><h3><a name="items" class="md-header-anchor"></a><span>Items</span></h3><p><span>This section shows a paginated list of all items that are present in STOCK.</span></p><p><span>The table has the following fields:</span></p><figure><table><thead><tr><th><span>Field</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><span>Sequence</span></td><td><span>Sequence order the item appears in the table (lowest first)</span></td></tr><tr><td><span>Picking Sequence</span></td><td><span>Picking Sequence order the items are picked in for deliveries (lowest first)</span></td></tr><tr><td><span>Id</span></td><td><span>Unique ID assigned to the item in STOCK for backed reference</span></td></tr><tr><td><span>Name</span></td><td><span>Name assigned to the item in STOCK, this will appear to engineers when ordering stock</span></td></tr><tr><td><span>Description</span></td><td><span>Description assigned to the item in STOCK, this is usually the same as the Name</span></td></tr><tr><td><span>SKU</span></td><td><span>SKU assigned to the item in STOCK, these are used as references in orders</span></td></tr><tr><td><span>Third Party SKU</span></td><td><span>SKU assigned to the corresponding item with ByBox, these are always the same as the SKU</span></td></tr><tr><td><span>Current Unit Cost</span></td><td><span>Cost assigned to the item in STOCK</span></td></tr><tr><td><span>Contract</span></td><td><span>Contract assigned to the item in STOCK</span></td></tr><tr><td><span>Item Type</span></td><td><span>Either </span><em><span>serialised</span></em><span> or </span><em><span>non serialised</span></em></td></tr><tr><td><span>Supplier</span></td><td><span>not in use</span></td></tr></tbody></table></figure><blockquote><p><span>The table can be filtered by Name, SKU, Item Type, Item Class and clicking </span><code>All</code><span> allows you to filter by Supplier, Third Party Sku, Category and Contract</span></p></blockquote><h4><a name="item-creation" class="md-header-anchor"></a><span>Item Creation</span></h4><p><span>To create a new item in STOCK</span></p><h4><a name="item-costs" class="md-header-anchor"></a><span>Item Costs</span></h4><p>&nbsp;</p><h4><a name="actions---inspecting-editing-costs-and-deletion" class="md-header-anchor"></a><span>Actions - Inspecting, Editing, Costs and Deletion</span></h4><p>&nbsp;</p><p>&nbsp;</p><h3><a name="meter-details" class="md-header-anchor"></a><span>Meter Details</span></h3><p>&nbsp;</p><h2><a name="stock-n199" class="md-header-anchor"></a><span>Stock</span></h2><h2><a name="engineer-stock-checks" class="md-header-anchor"></a><span>Engineer Stock Checks</span></h2><h2><a name="van-stock-transfer" class="md-header-anchor"></a><span>Van Stock Transfer</span></h2><h2><a name="regions-warehouses--locations" class="md-header-anchor"></a><span>Regions, Warehouses &amp; Locations</span></h2><h2><a name="containers" class="md-header-anchor"></a><span>Containers</span></h2><h2><a name="audits" class="md-header-anchor"></a><span>Audits</span></h2><h2><a name="users" class="md-header-anchor"></a><span>Users</span></h2><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p></div>
+</body>
+</html>
